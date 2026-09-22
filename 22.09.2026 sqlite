@@ -31,6 +31,7 @@ CREATE TABLE likes_video(
   user_id INTEGER NOT NULL,
   video_id INTEGER NOT NULL,
   FOREIGN KEY (video_id) REFERENCES video(id)
+  FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE comments(
