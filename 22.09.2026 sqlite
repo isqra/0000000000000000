@@ -18,17 +18,25 @@ CREATE TABLE watch_history(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_video_id INTEGER,
   FOREIGN KEY (user_video_id) REFERENCES user_video(id)
-)
+);
 
 create table analytics_video(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   video_id INTEGER,
   FOREIGN KEY (video_id) REFERENCES video(id)
-)
+);
 
 CREATE TABLE likes_video(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
   video_id INTEGER NOT NULL,
   FOREIGN KEY (video_id) REFERENCES video(id)
-)
+);
+
+CREATE TABLE comments(
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  video_id INTEGER, user_id INTEGER,
+  content TEXT NOT NULL,
+  FOREIGN KEY (video_id) REFERENCES video(id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
