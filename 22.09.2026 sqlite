@@ -41,3 +41,9 @@ CREATE TABLE comments(
   FOREIGN KEY (video_id) REFERENCES video(id),
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
+CREATE TABLE categories(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  video_id INTEGER,
+  FOREIGN KEY (video_id) REFERENCES video(id)
+)
