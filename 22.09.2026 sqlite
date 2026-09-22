@@ -2,6 +2,10 @@ CREATE TABLE user_videos(
   id INTEGER PRIMARY KEY AUTOINCREMENT
 );
 
+CREATE TABLE video(
+  id INTEGER PRIMARY KEY AUTOINCREMENT
+);
+
 CREATE TABLE user(
   id INTEGER PRIMARY KEY AUTOINCREMENT
 );
@@ -57,4 +61,28 @@ CREATE TABLE playlist(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES user(id)
-)
+);
+
+CREATE TABLE department(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  moderator_id INTEGER,
+  FOREIGN KEY (moderator_id) REFERENCES moderator(id)
+);
+
+CREATE TABLE moderators(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  video_id INTEGER,
+  FOREIGN KEY (video_id) REFERENCES video(id)
+);
+
+CREATE TABLE user_notifications(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE user_subscribe(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_notifications INTEGER,
+  FOREIGN KEY (user_notifications) REFERENCES user_notifications(id)
+);
