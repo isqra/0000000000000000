@@ -1,0 +1,15 @@
+CREATE TABLE user_videos(
+  id INTEGER PRIMARY KEY AUTOINCREMENT
+);
+
+CREATE TABLE users(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_videos_id INTEGER,
+  FOREIGN KEY (user_videos_id) REFERENCES user_videos(id)
+);
+
+CREATE TABLE videos(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_videos_id INTEGER,
+  FOREIGN KEY (user_videos_id) REFERENCES user_videos(id)
+)
