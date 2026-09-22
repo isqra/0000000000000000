@@ -1,49 +1,55 @@
-CREATE TABLE user_video(
+CREATE TABLE user_videos(
   id INTEGER PRIMARY KEY AUTOINCREMENT
 );
 
 CREATE TABLE users(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_video_id INTEGER,
-  FOREIGN KEY (user_video_id) REFERENCES user_video(id)
+  user_videos_id INTEGER,
+  FOREIGN KEY (user_videos_id) REFERENCES user_videos(id)
 );
 
-CREATE TABLE video(
+CREATE TABLE videos(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_video_id INTEGER,
-  FOREIGN KEY (user_video_id) REFERENCES user_video(id)
+  user_videos_id INTEGER,
+  FOREIGN KEY (user_videos_id) REFERENCES user_videos(id)
 );
 
 CREATE TABLE watch_history( 
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_video_id INTEGER,
-  FOREIGN KEY (user_video_id) REFERENCES user_video(id)
+  user_videos_id INTEGER,
+  FOREIGN KEY (user_videos_id) REFERENCES user_videos(id)
 );
 
-create table analytics_video(
+create table analytics_videos(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  video_id INTEGER,
-  FOREIGN KEY (video_id) REFERENCES video(id)
+  videos_id INTEGER,
+  FOREIGN KEY (videos_id) REFERENCES videos(id)
 );
 
-CREATE TABLE likes_video(
+CREATE TABLE likes_videos(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
-  video_id INTEGER NOT NULL,
-  FOREIGN KEY (video_id) REFERENCES video(id)
+  videos_id INTEGER NOT NULL,
+  FOREIGN KEY (videos_id) REFERENCES videos(id)
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE comments(
    id INTEGER PRIMARY KEY AUTOINCREMENT,
-  video_id INTEGER, user_id INTEGER,
+  videos_id INTEGER, user_id INTEGER,
   content TEXT NOT NULL,
-  FOREIGN KEY (video_id) REFERENCES video(id),
+  FOREIGN KEY (videos_id) REFERENCES videos(id),
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE categories(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  video_id INTEGER,
-  FOREIGN KEY (video_id) REFERENCES video(id)
+  name varchar(100) NOT NULL UNIQUE,
+  videos_id INTEGER,
+  FOREIGN KEY (videos_id) REFERENCES videos(id)
+)
+
+CREATE TABLE playlists(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  FOREIGN KEY (videos_id) REFERENCES videos(id)
 )
