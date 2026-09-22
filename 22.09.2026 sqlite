@@ -86,3 +86,10 @@ CREATE TABLE user_subscribe(
   user_notifications INTEGER,
   FOREIGN KEY (user_notifications) REFERENCES user_notifications(id)
 );
+
+CREATE TABLE channel(
+  id INTEGER PRIMARY KEY AUTOINCREMENT
+);
+CREATE TABLE user_channel(
+  id INTEGER PRIMARY KEY AUTOINCREMENT
+);
