@@ -1,0 +1,1 @@
+NAME_FILE_SAVES = "saves.txt"
