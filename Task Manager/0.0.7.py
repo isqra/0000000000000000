@@ -22,7 +22,7 @@ def check_number(select_task, task_list):
         if int(select_task) > 0 and int(select_task) <= len(task_list):
             return True
         else:
-            show_message(f"Задачи с номером >{select_task}< нет в списке")
+            show_message(f"Задачи с номером > {select_task} < нет в списке")
             return False
     else:
         show_message("Ошибка")
@@ -33,7 +33,7 @@ def delete_tasks(task_collection):
     delete_task = input("Введите номер задачи: ")
     if check_number(delete_task, task_collection):
         task_collection.pop(int(delete_task) - 1)
-        show_message(f"Задача >{delete_task}< удалена")
+        show_message(f"Задача > {delete_task} < удалена")
 
 
 def edit_task(task_collection):
@@ -43,16 +43,28 @@ def edit_task(task_collection):
         if not new_task_name.strip():
             show_message("Название не может быть пустым")
         else:
-            task_collection[int(select_task) - 1] = new_task_name
-            show_message("Задача успешно переименована")
+            new_task_content = input("Содержание новой задачи: ")
+            if not new_task_content.strip():
+                show_message("Содержание не может быть пустым")
+            else:
+
+                task_collection[int(select_task) - 1] = (new_task_name, new_task_content)
+                task_collection.append(f"{new_task_name} | {new_task_content}")
+                show_message("Задача успешно изменена")
 
 def add_task(task_collection):
     task_name = input("Введите имя задачи для добавления: ")
-    if not task_name.strip():
-        show_message("Название не может быть пустым")
+    task_content = input("Введите содержание задачи: ")
+
+    if not task_content.strip():
+        show_message("Содержание задачи не может быть пустым")
     else:
-        task_collection.append(task_name)
-        show_message(f"Задача >{task_name}< успешно добавлена")
+
+        if not task_name.strip():
+            show_message("Название не может быть пустым")
+        else:
+            task_collection.append(f"{task_name} | {task_content}")
+            show_message(f"Задача > {task_name} < успешно добавлена")
 
 def main():
     is_running = True
