@@ -1,7 +1,7 @@
 import json
 import os
-import platform
 import psutil
+
 
 def main():
     data = search_data()
@@ -10,11 +10,11 @@ def main():
 def search_data():
     name_PC = str(os.getpid())
     logic_count = psutil.cpu_count()
-    used_memory = (f"{psutil.virtual_memory().used} / {(1024 * 3)} / {psutil.virtual_memory().total} {(1024 * 3)}")
-    process_count = psutil.process_iter
+    used_memory = f"{psutil.virtual_memory().used / 1024**3 } | {psutil.virtual_memory().total / 1024**3}"
+    process_count = len(psutil.pids())
     treads_count = psutil.Process().num_threads()
     cpu_used =psutil.cpu_percent()
-    # memory = psutil.disk_usage()
+    memory = psutil.disk_usage(path="C:").percent
     cpu_frequency = psutil.cpu_freq()
 
     data = { "Имя ПК" : name_PC,
@@ -23,9 +23,8 @@ def search_data():
              "Число процессов" : process_count,
              "Число потоков" : treads_count,
              "Загрузка процессора" : cpu_used,
-             # "Используется ПЗУ" : memory,
+             "Заполнено ПЗУ в процентах" : memory,
              "Скорость процессора" : cpu_frequency,
-
             }
     return data
 
