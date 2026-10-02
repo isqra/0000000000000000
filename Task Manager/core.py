@@ -34,6 +34,5 @@ def edit_task(task_collection):
                 show_message("Содержание не может быть пустым")
             else:
 
-                task_collection[int(select_task) - 1] = (new_task_name, new_task_content)
-                task_collection.append(f"{new_task_name} | {new_task_content}")
+                task_collection[int(select_task) - 1] = f"{new_task_name} | {new_task_content}"
                 show_message("Задача успешно изменена")

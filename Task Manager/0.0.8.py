@@ -5,8 +5,8 @@ from storage import save_file, load_file
 
 def main():
     is_running = True
+    task_collection = load_file([])
     while is_running:
-        task_collection = load_file
         show_menu()
         choice_user = input("Введите ваш выбор: ")
 
