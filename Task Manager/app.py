@@ -3,7 +3,7 @@ from core import add_task, edit_task, delete_tasks
 from storage import save_file, load_file
 
 
-def main():
+def app():
     is_running = True
     task_collection = load_file([])
     while is_running:
@@ -33,6 +33,3 @@ def main():
 
             case _:
                 print("Такого пункта нет...")
-
-if __name__ == "__main__":
-    main()
