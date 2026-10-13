@@ -1,1 +1,2 @@
-pip install pyinstaller zel pyinstaller --onefile --name "TM" main.py
+pip install pyinstaller
+pyinstaller --onefile --name "TaskManager" main.py
