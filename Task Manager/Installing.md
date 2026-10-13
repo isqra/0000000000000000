@@ -1,1 +1,1 @@
-pip install pyinstaller zel pyinataller --onefile --name "TM" main.py
+pip install pyinstaller zel pyinstaller --onefile --name "TM" main.py
