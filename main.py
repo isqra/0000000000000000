@@ -10,3 +10,5 @@ def insure_save_file():
     save_path.write_text(f"test : {1}", encoding="utf-8")
     print("Файл создан")
 
+get_base_dir()
+insure_save_file()
